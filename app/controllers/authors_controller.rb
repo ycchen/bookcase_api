@@ -15,6 +15,9 @@ class AuthorsController < ApplicationController
 
   # POST /authors
   def create
+      puts "=================="
+      puts "=====params===#{params.inspect}=========="
+      puts "=================="
     @author = Author.new(author_params)
 
     if @author.save
@@ -46,6 +49,10 @@ class AuthorsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def author_params
-      params.require(:author).permit(:name)
+      # params.require(:author).permit(:name)
+      params.require(:data).permit(:name)
+     # params.require(:data)
+     #    .require(:attributes)
+     #    .permit(:name)
     end
 end

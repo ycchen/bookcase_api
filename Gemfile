@@ -19,10 +19,15 @@ gem 'puma'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+# Use ActiveModelSerializers to serialize JSON responses
+gem 'active_model_serializers', '~> 0.10.0.rc2'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'shoulda-matchers', require: false
+  gem 'shoulda-matchers', '~> 3.0'
+  #Use factory_girl for creating factories
+  gem 'factory_girl_rails'
 end
 
 group :development do
