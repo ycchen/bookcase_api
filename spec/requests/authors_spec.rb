@@ -37,46 +37,65 @@ RSpec.describe "Authors", :type => :request do
 
   describe "POST /authors" do
   	it "creates the specified author" do
-      author = {
-        data: {
-          type: "authors",
-          attributes: {
-            name: "John Doe"
-          }
-        }
-      }
-     # author={
-					#   "data":{
-					#     "type": "authors",
-					#     "attributes": {
-					#       "name": "John Doe"
-					#     }
-					# 	}
-					# }
+      # author = {"data": {"type":"authors", "attributes":{"name": "Jane Doe"}}}
 
-      puts author.to_json
-
+      # curl -H "Content-Type:application/json; charset=utf-8" -d '{"data": {"type":"authors", "attributes":{"name": "Jane Doe"}}}' http://localhost:3000/authors
+			author = {
+				data: {
+					type: "authors",
+					attributes: {
+						name: "John Doe"
+					}
+				}
+			}
+      
       post '/authors',
-      			params: author.to_json,
-      			headers: { 'Content-Type': 'application/vnd.api+json' }
+      params: author.to_json,
+      headers: { 'Content-Type': 'application/json' }
 
-      # expect(response.status).to eq 201
-      # body = JSON.parse(response.body)
-
-      # author_name = body['data']['attributes']['name']
-      # expect(author_name) == 'John Doe'
+      expect(response.status).to eq 201
+      body = JSON.parse(response.body)
+      # puts body.inspect
+      author_name = body['data']['attributes']['name']
+      expect(author_name) == 'John Doe'
     end
   end
 
   describe "PUT /authors/:id" do
   	it "updates the specified author" do
+  		FactoryGirl.create :author, name: 'John Doe', id: 1
+
+  		author={
+  			data: {
+  				type: "authors",
+  				id: 1,
+  				attributes:{
+  					name: "Will Smith"
+  				}
+  			}
+  		}
+
+  		put '/authors/1',
+  		params: author.to_json,
+  		headers: {'Content-Type': 'application/json'}
+
+			expect(response.status).to eq 200
+
+			body = JSON.parse(response.body)
+			# puts body.inspect
+			author_name = body['data']['attributes']['name']
+			expect(author_name) == 'Will Smith'
 
   	end
   end
   
   describe "DELETE /authors/:id" do
   	it "deltes the specified author" do
+  		FactoryGirl.create :author, name: 'John Doe', id: 1
 
+  		delete '/authors/1'
+
+  		expect(response.status).to eq 204
   	end
   end
 end
