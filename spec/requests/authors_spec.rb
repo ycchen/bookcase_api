@@ -14,7 +14,7 @@ RSpec.describe "Authors", :type => :request do
     	expect(response.status).to eq 200
 
     	body = JSON.parse(response.body)
-    	puts body.inspect
+    	# puts body.inspect
     	author_names = body['data'].map{|author| author['attributes']['name']}
     	# puts author_names.inspect
     	expect(author_names).to match_array(list_names)
@@ -28,7 +28,7 @@ RSpec.describe "Authors", :type => :request do
     	get '/authors/1'
 
     	body = JSON.parse(response.body)
-			puts body.inspect
+			# puts body.inspect
 			author_name = body['data']['attributes']['name']
 			expect(author_name) == 'John Doe'
 
