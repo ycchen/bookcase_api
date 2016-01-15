@@ -53,4 +53,26 @@ rails g serializer <model name> <modle field 1> <modle field 2>
 
 rails g serializer author id name created_at
 
+## generate author model
+
+rails g scaffold author name
+
 ## create spec/request/authors_spec.rb
+
+* for POST and PUT the Content-Type needs to be application/json, for some reason the application/vnd.api+json will throw an error the params[:data] is empty.
+
+## generate publisher model
+
+rails g scaffold publisher name
+
+## generate publication model
+
+rails g model Publication book:references author:references
+
+## generate book model
+
+rails g scaffold book title isbn cover 
+
+
+
+
