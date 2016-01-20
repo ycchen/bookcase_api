@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :publisher do
-    name "MyString"
+    name "Manning"
   end
 
 end

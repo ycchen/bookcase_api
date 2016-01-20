@@ -71,8 +71,11 @@ rails g model Publication book:references author:references
 
 ## generate book model
 
-rails g scaffold book title isbn cover 
+rails g scaffold book title isbn cover publisher:references
 
+* generate Factory_Girl for book model
+
+* genrate book model rspec
 
 
 
