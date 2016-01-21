@@ -7,17 +7,17 @@ RSpec.describe PublishersController, :type => :routing do
       expect(:get => "/publishers").to route_to("publishers#index")
     end
 
-    it "routes to #new" do
-      expect(:get => "/publishers/new").to route_to("publishers#new")
-    end
+    # it "routes to #new" do
+    #   expect(:get => "/publishers/new").to route_to("publishers#new")
+    # end
 
     it "routes to #show" do
       expect(:get => "/publishers/1").to route_to("publishers#show", :id => "1")
     end
 
-    it "routes to #edit" do
-      expect(:get => "/publishers/1/edit").to route_to("publishers#edit", :id => "1")
-    end
+    # it "routes to #edit" do
+    #   expect(:get => "/publishers/1/edit").to route_to("publishers#edit", :id => "1")
+    # end
 
     it "routes to #create" do
       expect(:post => "/publishers").to route_to("publishers#create")
